@@ -154,6 +154,8 @@ airflow 설정 파일 변경해야함
 amqp 가 아니라 pyamqp로 진행
 result_backend 도 postgre 를 지정 
 
+
+***아래 보면 result_backend는 내 airflow 위치 가르키면 되는 것 같고 ubuntu 는 user 그 뒤 패스워드 그뒤 경로 맨뒤 테이블 명***
 ``` 
 
 sudo pip3 install pyamqp
@@ -163,7 +165,8 @@ vi airflow/airflow.cfg
 executor = CeleryExecutor
 sql_alchemy_conn = postgresql+psycopg2:///airflow
 broker_url = pyamqp://guest:guest@localhost:5672//
-result_backend = db+postgresql://airflow:airflow@postgres/airflow
+result_backend = db+postgresql://ubuntu:0000@localhost:5432/airflow
+
 ```
 
 ![단어](./img/word.png)
@@ -206,12 +209,16 @@ $ airflow webserver -p 8080 -D
     ```
     - 4. source ~/.bash_profile
     
+<br><br><br>
+    
 **Celery Executor을 사용한다면 worker를 동작시켜야하고 동작 되는지 확인해야함. queued 나 scheduled되있는데 run을 안한다면 worker 동작 안하고 있을 가능성 큼**
 
 
+<br><br>
 
+***주의할 점 프로세스 kill만 한다고 해도 찌꺼기 파일들이 db에 남아있기 때문에 pid 파일들을 지워야함 lock error 같은 경우들이 대게 그런 경우리고 보통 이럴땐 -D 로 실행도 안됨***
 
-  
+<br>
    
 참고 사이트 
 
