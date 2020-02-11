@@ -155,7 +155,11 @@ amqp 가 아니라 pyamqp로 진행
 result_backend 도 postgre 를 지정 
 
 
-***아래 보면 result_backend는 내 airflow 위치 가르키면 되는 것 같고 ubuntu 는 user 그 뒤 패스워드 그뒤 경로 맨뒤 테이블 명***
+***아래 보면 result_backend는 내 airflow 위치 가르키면 되는 것 같고 ubuntu 는 user 그 뒤 패스워드 그뒤 경로 맨뒤 테이블 명 따라서 위에서 postgre 에서 ubuntu 생성할 때 패스워드도 변경해주는게 좋음***
+
+[postgre password change](https://chartio.com/resources/tutorials/how-to-set-the-default-user-password-in-postgresql/)
+
+
 ``` 
 
 sudo pip3 install pyamqp
