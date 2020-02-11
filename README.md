@@ -1,7 +1,7 @@
 
 
 ### AIRFLOW
-![](./img/airflow.PNG)
+![](./img/airflow.png)
 
 #### workflow 관리를 위해 사용 
 
@@ -48,7 +48,7 @@ $ sudo apt-get install postgresql postgresql-contrib -y
 이름은 Minwoo  DB 명 Airflow 
 Minwoo 가 아니라 user 명과 동일하게 해야할듯 
 
-![](./img/root.PNG) 이 경우엔 Minwoo 대신 root <br>
+![](./img/root.png) 이 경우엔 Minwoo 대신 root <br>
 *root 는 안쓰는게 좋음*
 
 ~~~   
@@ -102,7 +102,7 @@ $ sudo pip3 install apache-airflow[postgres]
 ```
 
 celey 를 설치한 후엔 RabbitMQ 를 설치하여 Message Broker로 사용<br>
-![](./img/rabbit.PNG)
+![](./img/rabbit.png)
 
 
 [psycopg2 에러 참고](https://github.com/facebook/prophet/issues/418)
