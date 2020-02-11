@@ -166,7 +166,7 @@ broker_url = pyamqp://guest:guest@localhost:5672//
 result_backend = db+postgresql://airflow:airflow@postgres/airflow
 ```
 
-![단어](./img/word.PNG)
+![단어](./img/word.png)
 
 기본적으로 게스트 계정 생성됨 위에 브로커 url 하고 result_backend 는 동일한 값으로 설정하거나 result_backend 를 sql_alchemy_conn 이랑 맞춰줄 수 있음 아니면 rabbitmq 계정을 생성해서 guest 대신 쓸 수 있음
 
