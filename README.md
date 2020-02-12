@@ -1,7 +1,7 @@
 
 
 ### AIRFLOW
-![](./img/airflow.PNG)
+![](./img/airflow.png)
 
 #### workflow 관리를 위해 사용 
 
@@ -48,7 +48,7 @@ $ sudo apt-get install postgresql postgresql-contrib -y
 이름은 Minwoo  DB 명 Airflow 
 Minwoo 가 아니라 user 명과 동일하게 해야할듯 
 
-![](./img/root.PNG) 이 경우엔 Minwoo 대신 root <br>
+![](./img/root.png) 이 경우엔 Minwoo 대신 root <br>
 *root 는 안쓰는게 좋음*
 
 ~~~   
@@ -102,7 +102,7 @@ $ sudo pip3 install apache-airflow[postgres]
 ```
 
 celey 를 설치한 후엔 RabbitMQ 를 설치하여 Message Broker로 사용<br>
-![](./img/rabbit.PNG)
+![](./img/rabbit.png)
 
 
 [psycopg2 에러 참고](https://github.com/facebook/prophet/issues/418)
@@ -154,6 +154,12 @@ airflow 설정 파일 변경해야함
 amqp 가 아니라 pyamqp로 진행
 result_backend 도 postgre 를 지정 
 
+
+***아래 보면 result_backend는 내 airflow 위치 가르키면 되는 것 같고 ubuntu 는 user 그 뒤 패스워드 그뒤 경로 맨뒤 테이블 명 따라서 위에서 postgre 에서 ubuntu 생성할 때 패스워드도 변경해주는게 좋음***
+
+[postgre password change](https://chartio.com/resources/tutorials/how-to-set-the-default-user-password-in-postgresql/)
+
+
 ``` 
 
 sudo pip3 install pyamqp
@@ -163,10 +169,11 @@ vi airflow/airflow.cfg
 executor = CeleryExecutor
 sql_alchemy_conn = postgresql+psycopg2:///airflow
 broker_url = pyamqp://guest:guest@localhost:5672//
-result_backend = db+postgresql://airflow:airflow@postgres/airflow
+result_backend = db+postgresql://ubuntu:0000@localhost:5432/airflow
+
 ```
 
-![단어](./img/word.PNG)
+![단어](./img/word.png)
 
 기본적으로 게스트 계정 생성됨 위에 브로커 url 하고 result_backend 는 동일한 값으로 설정하거나 result_backend 를 sql_alchemy_conn 이랑 맞춰줄 수 있음 아니면 rabbitmq 계정을 생성해서 guest 대신 쓸 수 있음
 
@@ -206,12 +213,16 @@ $ airflow webserver -p 8080 -D
     ```
     - 4. source ~/.bash_profile
     
+<br><br><br>
+    
 **Celery Executor을 사용한다면 worker를 동작시켜야하고 동작 되는지 확인해야함. queued 나 scheduled되있는데 run을 안한다면 worker 동작 안하고 있을 가능성 큼**
 
 
+<br><br>
 
+***주의할 점 프로세스 kill만 한다고 해도 찌꺼기 파일들이 db에 남아있기 때문에 pid 파일들을 지워야함 lock error 같은 경우들이 대게 그런 경우리고 보통 이럴땐 -D 로 실행도 안됨***
 
-  
+<br>
    
 참고 사이트 
 
