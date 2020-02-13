@@ -28,10 +28,13 @@ args
 
 - retries (int) – the number of retries that should be performed before failing the task
 
-- catchup - backfill 할건지
-
+- catchup - backfill 할건지 True 로 하면 backfill 안하는거임 
+ 
 ------------------
 ***주의***
+
+
+2020-02-12
 
 airflow 에서 bash_operator 명령을 할때 즉 command 명령을 실행할때
 맨 마지막을 공백으로 남겨두는것 주의하기 
@@ -40,13 +43,30 @@ jinja 랑 충돌날 수 있음
 
 쉘을 실행할때 기본 경로는 tmp 쪽에 있음 그러니 경로설정 주의 
 
+<br><br><br>
+~airflow 를 테스트 할 땐 정상 작동하는데 직접 실행 시키면
+자격증명 오류가 뜸 Iam role을 ec2에 적용시켯는데 airflow를 쓰려면
+다른 조치가 필요 ???
+해결~
 
+
+test 방법
+
+airflow test dag명 task명 날짜
 
 -------------------
 
-airflow 를 테스트 할 땐 정상 작동하는데 직접 실행 시키면
-자격증명 오류가 뜸 Iam role을 ec2에 적용시켯는데 airflow를 쓰려면
-다른 조치가 필요 ???
+2020-02-13
+
+~airflow worker 쪽에 mingle 문제 발생 
+메모리부족 ??
+무슨 문제일까 실행하는데는 문제 없었음~ 
+
+실행 안되는건 날짜 문제도 확인해봐야할듯
+
+schedule_interval 같은건 arg 에서 설정 x dag 내의 인자로 넘겨줘야
+적용됨
+
 
 
 
