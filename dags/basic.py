@@ -26,7 +26,7 @@ default_args = {
         'owner' : 'airflow',
         'depends_on_past' : True,
         'wait_for_downstream' : True,
-        'start_date' : datetime(2020,2,12),
+        'start_date' : datetime(2020,3,25),
         'schedule_interval': '@once'
         }
 
